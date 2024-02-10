@@ -92,7 +92,7 @@ BOT: 怎麼了 期中考考爛了嗎
 ```
 
 1. 此時會開始訓練，會花上數小時。需耐心等待
-2. 以上訓練參數視情況而定，--sample-start "<s>"只在使用以上訓練檔案格式中適用
+2. 以上訓練參數視情況而定，--sample-start "\<s\>"只在使用以上訓練檔案格式中適用
 3. fine-tuning過程會產生不同時間點之checkpoint lora檔，最終訓練結果為ggml-lora-LATEST-f32.gguf
 
 ## 8. 使用fine-tuned模型
