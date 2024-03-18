@@ -88,14 +88,15 @@ BOT: 怎麼了 期中考考爛了嗎
 ## 7. 開始fine-tune
 
 ```
-./finetune --model-base models/Taiwan-LLM-7B-v2.0.1-chat/ggml-model-q4_0.bin --train-data trainfile.txt --threads 26 --sample-start "<s>" --ctx 512
+./finetune --model-base models/Taiwan-LLM-7B-v2.0.1-chat/ggml-model-q4_0.gguf --train-data trainfile.txt --threads 26 --sample-start "<s>" --ctx 256
 ```
 
 1. 此時會開始訓練，會花上數小時。需耐心等待
 2. 以上訓練參數視情況而定，--sample-start "\<s\>"只在使用以上訓練檔案格式中適用
 3. fine-tuning過程會產生不同時間點之checkpoint lora檔，最終訓練結果為ggml-lora-LATEST-f32.gguf
+4. --ctx 可設定128、256、512等等，代表可接受最長的content長度，超過設定值的內容會被捨棄
 
 ## 8. 使用fine-tuned模型
 ```
-./main --model models/Taiwan-LLM-7B-v2.0.1-chat/ggml-model-q4_0.bin --lora ggml-lora-LATEST-f32.gguf --lora-base models/Taiwan-LLM-7B-v2.0.1-chat/ggml-model-f16.gguf --promt "<文字內容>"
+./main --model models/Taiwan-LLM-7B-v2.0.1-chat/ggml-model-q4_0.gguf --lora ggml-lora-LATEST-f32.gguf --lora-base models/Taiwan-LLM-7B-v2.0.1-chat/ggml-model-f16.gguf --promt "<文字內容>"
 ```
